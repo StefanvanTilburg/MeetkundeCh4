@@ -40,6 +40,12 @@ public class Cirkel extends Figuur {
                 "afstand tot een middelpunt hebben.";
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "\nStraal: " + straal + "\nMiddelpunt: " +
+                middelpunt.toString();
+    }
+
     public double getStraal() {
         return straal;
     }

@@ -20,6 +20,11 @@ public class Punt {
         this(0,0);
     }
 
+    @Override
+    public String toString() {
+        return String.format("(%.2f, %.2f)", xCoordinaat, yCoordinaat);
+    }
+
     public double getxCoordinaat() {
         return xCoordinaat;
     }

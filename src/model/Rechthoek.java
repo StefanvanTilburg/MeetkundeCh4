@@ -41,6 +41,12 @@ public class Rechthoek extends Figuur {
         return this.getLengte() * this.getBreedte();
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "\nLengte: " + lengte + "\nBreedte: " +
+                breedte + "\nHoekpunt: " + hoekpuntLinksBoven.toString();
+    }
+
     public Punt getHoekpuntLinksBoven() {
         return hoekpuntLinksBoven;
     }
