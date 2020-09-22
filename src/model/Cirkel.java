@@ -18,9 +18,9 @@ public class Cirkel {
     }
 
     public Cirkel(double straal, Punt middelpunt, String kleur) {
-        this.straal = straal;
-        this.middelpunt = middelpunt;
-        this.kleur = kleur;
+        this.setStraal(straal);
+        this.setMiddelpunt(middelpunt);
+        this.setKleur(kleur);
     }
 
     public Cirkel(double straal) {

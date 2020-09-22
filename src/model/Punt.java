@@ -11,13 +11,13 @@ public class Punt {
     private double xCoordinaat;
     private double yCoordinaat;
 
-    public Punt() {
-        this(0,0);
+    public Punt(double xCoordinaat, double yCoordinaat) {
+        this.setxCoordinaat(xCoordinaat);
+        this.setyCoordinaat(yCoordinaat);
     }
 
-    public Punt(double xCoordinaat, double yCoordinaat) {
-        this.xCoordinaat = xCoordinaat;
-        this.yCoordinaat = yCoordinaat;
+    public Punt() {
+        this(0,0);
     }
 
     public double getxCoordinaat() {
