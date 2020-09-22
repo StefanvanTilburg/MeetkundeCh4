@@ -5,7 +5,7 @@ package model;
  * <p>
  * Opdracht
  * <p>
- * Doel
+ * Doel     Class om punt gegevens in op te slaan.
  */
 public class Punt {
     private double xCoordinaat;

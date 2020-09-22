@@ -5,7 +5,7 @@ package model;
  * <p>
  * Opdracht
  * <p>
- * Doel
+ * Doel     Deze class wordt gebruikt om cirkel gegevens in op te slaan
  */
 public class Cirkel {
     private final static double GRENSWAARDE_GROOT_FIGUUR = 100.0;
