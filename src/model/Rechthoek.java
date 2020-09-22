@@ -7,23 +7,20 @@ package model;
  * <p>
  * Doel     Deze class wordt gebruikt om Rechthoek gegevens in op te slaan.
  */
-public class Rechthoek {
-    private final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
-
+public class Rechthoek extends Figuur {
     private double lengte;
     private double breedte;
     private Punt hoekpuntLinksBoven;
-    private String kleur;
 
     public Rechthoek(double lengte, double breedte, Punt hoekpuntLinksBoven, String kleur) {
+        super(kleur);
         this.setLengte(lengte);
         this.setBreedte(breedte);
         this.setHoekpuntLinksBoven(hoekpuntLinksBoven);
-        this.setKleur(kleur);
     }
 
     public Rechthoek(double lengte, double breedte) {
-        this(lengte, breedte,new Punt(),"wit");
+        this(lengte, breedte,new Punt(),DEFAULTWAARDE_KLEUR);
     }
 
     public Rechthoek() {
@@ -34,20 +31,14 @@ public class Rechthoek {
         return "Een rechthoek is een vierhoek met vier rechte hoeken.";
     }
 
+    @Override
     public double geefOmtrek() {
         return (this.getLengte() + this.getBreedte()) *  2;
     }
 
+    @Override
     public double geefOppervlakte() {
         return this.getLengte() * this.getBreedte();
-    }
-
-    public String vertelOverGrootte() {
-        if (geefOppervlakte() > GRENSWAARDE_GROOT_FIGUUR) {
-            return "Ik ben groot!!!";
-        } else {
-            return "Ik ben klein!!!";
-        }
     }
 
     public Punt getHoekpuntLinksBoven() {
@@ -72,13 +63,5 @@ public class Rechthoek {
 
     public void setBreedte(double breedte) {
         this.breedte = breedte;
-    }
-
-    public String getKleur() {
-        return kleur;
-    }
-
-    public void setKleur(String kleur) {
-        this.kleur = kleur;
     }
 }

@@ -35,7 +35,6 @@ public class Cirkel extends Figuur {
         return Math.PI * getStraal() * getStraal();
     }
 
-    @Override
     public static String geefDefinitie() {
         return "Een cirkel is een verzameling punten, die allemaal dezelfde " +
                 "afstand tot een middelpunt hebben.";
