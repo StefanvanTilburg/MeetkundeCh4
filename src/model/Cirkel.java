@@ -13,10 +13,6 @@ public class Cirkel {
     private Punt middelpunt;
     private String kleur;
 
-    public Cirkel() {
-        this(1);
-    }
-
     public Cirkel(double straal, Punt middelpunt, String kleur) {
         this.setStraal(straal);
         this.setMiddelpunt(middelpunt);
@@ -25,6 +21,10 @@ public class Cirkel {
 
     public Cirkel(double straal) {
         this(straal, new Punt(), "wit");
+    }
+
+    public Cirkel() {
+        this(1);
     }
 
     public String vertelOverGrootte() {
