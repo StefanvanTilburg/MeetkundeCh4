@@ -49,7 +49,11 @@ public class MeetkundeLauncher {
         System.out.println("De straal van mijn tweede cirkel is: " + mijnCirkels.get(1).getStraal());
         mijnCirkels.remove(2);
         System.out.println(String.format("Er zijn nu %d cirkels", mijnCirkels.size()));
-        toonInformatie(mijnCirkels.get(1));
+
+        for (Cirkel mijnCirkel2 : mijnCirkels) {
+            toonInformatie(mijnCirkel2);
+            System.out.println();
+        }
     }
 
     public static void toonInformatie(Figuur figuur) {
