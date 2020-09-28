@@ -1,6 +1,7 @@
 package controller;
 
 import model.Cirkel;
+import model.Figuur;
 import model.Punt;
 import model.Rechthoek;
 
@@ -13,25 +14,25 @@ import model.Rechthoek;
  */
 public class MeetkundeLauncher {
     public static void main(String[] args) {
+        Cirkel mijnCirkel = new Cirkel(3, new Punt(2, 5), "groen");
+        toonInformatie(mijnCirkel);
 
-        Cirkel[] mijnCirkelArray = new Cirkel[3];
-        mijnCirkelArray[0] = new Cirkel(3, new Punt(1,4), "groen");
-        mijnCirkelArray[1] = new Cirkel();
-        mijnCirkelArray[2] = new Cirkel(6);
-        for (int arrayTeller = 0; arrayTeller < mijnCirkelArray.length;
-             arrayTeller++) {
-            System.out.println(mijnCirkelArray[arrayTeller]);
-            System.out.println(mijnCirkelArray[arrayTeller].vertelOverGrootte());
-        }
+        Rechthoek mijnRechthoek = new Rechthoek(3, 4, new Punt(-2, 6),
+                "blauw");
+        toonInformatie(mijnRechthoek);
 
-        Rechthoek[] mijnRechthoekArray = new Rechthoek[3];
-        mijnRechthoekArray[0] = new Rechthoek(4, 3, new Punt(2, 5), "blauw");
-        mijnRechthoekArray[1] = new Rechthoek();
-        mijnRechthoekArray[2] = new Rechthoek(25, 10);
-        for (int arrayTeller = 0; arrayTeller < mijnRechthoekArray.length;
-             arrayTeller++) {
-            System.out.println(mijnRechthoekArray[arrayTeller]);
-            System.out.println(mijnRechthoekArray[arrayTeller].vertelOverGrootte());
+        Figuur[] figuren = new Figuur[3];
+        figuren[0] = mijnCirkel;
+        figuren[1] = mijnRechthoek;
+        figuren[2] = new Cirkel(10, new Punt(-1,-3), "karmozijn");
+        for (int figuurTeller = 0; figuurTeller < 3; figuurTeller++) {
+            System.out.println(figuren[figuurTeller]);      // Zou ook toonInformatie methode kunnen gebruiken
+            System.out.println();
         }
+    }
+
+    public static void toonInformatie(Figuur figuur) {
+        System.out.println(figuur);
+        System.out.println();
     }
 }
