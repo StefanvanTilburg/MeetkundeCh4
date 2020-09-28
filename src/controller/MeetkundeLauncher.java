@@ -29,6 +29,15 @@ public class MeetkundeLauncher {
             System.out.println(figuren[figuurTeller]);      // Zou ook toonInformatie methode kunnen gebruiken
             System.out.println();
         }
+
+        // Boxing & unboxing & autoboxing
+        // Converting primitive datatype to object is called boxing
+        int integer1 = 3;
+        int integer2 = Integer.valueOf(3);
+        Integer integer3 = 3;
+        Integer integer4 = Integer.valueOf(3);
+        System.out.println(integer1 + "\n" + Integer.valueOf(integer2).toString()
+                + "\n" + integer3 + "\n" + integer4.toString());
     }
 
     public static void toonInformatie(Figuur figuur) {
