@@ -21,7 +21,29 @@ public class Oppervlak {
     }
 
     public void voegFiguurToe(Figuur figuur) {
-        mijnFiguren.add(figuur);
+        if (figuurPastAlsVormInOppervlak(figuur)) {
+            mijnFiguren.add(figuur);
+            System.out.println("Dit figuur is toegevoegd");
+        } else {
+            System.out.println("Dit figuur is te groot");
+        }
+    }
+
+    private boolean figuurPastAlsVormInOppervlak(Figuur figuur) {
+        boolean eenReturn = false;
+
+        if (figuur instanceof Rechthoek) {
+            if (((Rechthoek) figuur).getLengte() <= lengte &&
+                    ((Rechthoek) figuur).getBreedte() <= breedte){
+                eenReturn = true;
+            }
+        } else {
+            if (((Cirkel) figuur).getStraal() <= breedte / 2) {
+                eenReturn = true;
+            }
+        }
+
+        return eenReturn;
     }
 
     @Override
