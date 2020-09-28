@@ -5,6 +5,8 @@ import model.Figuur;
 import model.Punt;
 import model.Rechthoek;
 
+import java.util.ArrayList;
+
 /**
  * @author Stefan van Tilburg
  * <p>
@@ -38,6 +40,16 @@ public class MeetkundeLauncher {
         Integer integer4 = Integer.valueOf(3);
         System.out.println(integer1 + "\n" + Integer.valueOf(integer2).toString()
                 + "\n" + integer3 + "\n" + integer4.toString());
+
+        ArrayList<Cirkel> mijnCirkels = new ArrayList<>();
+        mijnCirkels.add(new Cirkel(3, new Punt(1, 4), "groen"));
+        mijnCirkels.add(new Cirkel());
+        mijnCirkels.add(new Cirkel(6));
+        System.out.println(String.format("Er zijn nu %d cirkels", mijnCirkels.size()));
+        System.out.println("De straal van mijn tweede cirkel is: " + mijnCirkels.get(1).getStraal());
+        mijnCirkels.remove(2);
+        System.out.println(String.format("Er zijn nu %d cirkels", mijnCirkels.size()));
+        toonInformatie(mijnCirkels.get(1));
     }
 
     public static void toonInformatie(Figuur figuur) {
