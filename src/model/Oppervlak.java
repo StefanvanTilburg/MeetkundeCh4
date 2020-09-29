@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author Stefan van Tilburg
@@ -49,13 +50,12 @@ public class Oppervlak {
     @Override
     public String toString() {
         String eenReturn = "";
-
         if (!mijnFiguren.isEmpty()) {
+            Collections.sort(mijnFiguren);
             for (Figuur figuur : mijnFiguren) {
                 eenReturn += figuur.toString() + "\n\n";
             }
         }
-
         return eenReturn;
     }
 }

@@ -7,7 +7,7 @@ package model;
  * <p>
  * Doel
  */
-public abstract class Figuur {
+public abstract class Figuur implements Comparable<Figuur> {
     protected static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
     protected static final String DEFAULTWAARDE_KLEUR = "wit";
 
@@ -41,6 +41,17 @@ public abstract class Figuur {
     public String toString() {
         return "Kleur: " + kleur + "\nOmtrek: " + geefOmtrek() +
                 "\nOppervlakte: " + geefOppervlakte();
+    }
+
+    @Override
+    public int compareTo(Figuur anderFiguur) {
+        if (this.geefOppervlakte() > anderFiguur.geefOppervlakte()) {
+            return 1;
+        } else if (this.geefOppervlakte() < anderFiguur.geefOppervlakte()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
     public String getKleur() {
