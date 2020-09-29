@@ -2,7 +2,7 @@ package controller;
 
 import model.*;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * @author Stefan van Tilburg
@@ -13,18 +13,39 @@ import java.util.ArrayList;
  */
 public class MeetkundeLauncher {
     public static void main(String[] args) {
-        Oppervlak oppervlak = new Oppervlak(10, 7);
-        oppervlak.voegFiguurToe(new Rechthoek(3, 3, new Punt(0, 7), "rood"));
-        oppervlak.voegFiguurToe(new Rechthoek(3, 2, new Punt(0, 4), "geel"));
-        oppervlak.voegFiguurToe(new Rechthoek(5, 2, new Punt(0, 2), "groen"));
-        oppervlak.voegFiguurToe(new Rechthoek(5, 2, new Punt(3, 7), "paars"));
-        oppervlak.voegFiguurToe(new Rechthoek(5, 4, new Punt(5, 7), "oranje"));
-        oppervlak.voegFiguurToe(new Rechthoek(5, 3, new Punt(5, 3), "blauw"));
-        System.out.println(oppervlak);
-    }
+        Scanner invoer = new Scanner(System.in);
 
-    public static void toonInformatie(Figuur figuur) {
-        System.out.println(figuur);
-        System.out.println();
+        boolean onjuisteInvoer = true;
+
+        while (onjuisteInvoer) {
+            System.out.print("Geef een straal: ");
+            double straal = invoer.nextDouble();
+            try {
+                Cirkel ingevoerdeCirkel = new Cirkel(straal);
+                System.out.println(ingevoerdeCirkel);
+                onjuisteInvoer = false;
+            } catch (IllegalArgumentException fout) {
+                System.out.println(fout.getMessage());
+            } finally {
+                System.out.println("Je invoer is op de juiste wijze afgehandeld.");
+            }
+        }
+
+        onjuisteInvoer = true;
+        while (onjuisteInvoer) {
+            System.out.print("Geef een lengte: ");
+            double lengte = invoer.nextDouble();
+            System.out.print("Geef een breedte: ");
+            double breedte = invoer.nextDouble();
+            try {
+                Rechthoek ingevoerdeRechthoek = new Rechthoek(lengte, breedte);
+                System.out.println(ingevoerdeRechthoek);
+                onjuisteInvoer = false;
+            } catch (IllegalArgumentException fout) {
+                System.out.println(fout.getMessage());
+            } finally {
+                System.out.println("Je invoer is op de juiste wijze afgehandeld.");
+            }
+        }
     }
 }

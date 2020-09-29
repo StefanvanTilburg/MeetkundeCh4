@@ -59,7 +59,10 @@ public class Rechthoek extends Figuur {
         return lengte;
     }
 
-    public void setLengte(double lengte) {
+    public void setLengte(double lengte) throws IllegalArgumentException {
+        if (lengte <= 0) {
+            throw new IllegalArgumentException("De lengte moet positief zijn.");
+        }
         this.lengte = lengte;
     }
 
@@ -67,7 +70,10 @@ public class Rechthoek extends Figuur {
         return breedte;
     }
 
-    public void setBreedte(double breedte) {
+    public void setBreedte(double breedte) throws IllegalArgumentException {
+        if (breedte <= 0) {
+            throw new IllegalArgumentException("De breedte moet positief zijn.");
+        }
         this.breedte = breedte;
     }
 }

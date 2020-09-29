@@ -50,7 +50,10 @@ public class Cirkel extends Figuur {
         return straal;
     }
 
-    public void setStraal(double straal) {
+    public void setStraal(double straal) throws IllegalArgumentException {
+        if (straal <= 0) {
+            throw new IllegalArgumentException("De straat moet positief zijn.");
+        }
         this.straal = straal;
     }
 
