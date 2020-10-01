@@ -2,6 +2,9 @@ package controller;
 
 import model.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,38 +16,30 @@ import java.util.Scanner;
  */
 public class MeetkundeLauncher {
     public static void main(String[] args) {
-        Scanner invoer = new Scanner(System.in);
-
-        boolean onjuisteInvoer = true;
-
-        while (onjuisteInvoer) {
-            System.out.print("Geef een straal: ");
-            double straal = invoer.nextDouble();
-            try {
-                Cirkel ingevoerdeCirkel = new Cirkel(straal);
-                System.out.println(ingevoerdeCirkel);
-                onjuisteInvoer = false;
-            } catch (IllegalArgumentException fout) {
-                System.out.println(fout.getMessage());
-            } finally {
-                System.out.println("Je invoer is op de juiste wijze afgehandeld.");
+        ArrayList<String> regelsUitBestand = new ArrayList<>();
+        File rechthoekenBestand = new File("resources/Rechthoek.csv");
+        try {
+            Scanner invoer = new Scanner(rechthoekenBestand);
+            while (invoer.hasNextLine()) {
+                regelsUitBestand.add(invoer.nextLine());
             }
+        } catch (FileNotFoundException nietGevonden) {
+            System.out.println("Het bestand is niet gevonden.");
         }
-
-        onjuisteInvoer = true;
-        while (onjuisteInvoer) {
-            System.out.print("Geef een lengte: ");
-            double lengte = invoer.nextDouble();
-            System.out.print("Geef een breedte: ");
-            double breedte = invoer.nextDouble();
-            try {
-                Rechthoek ingevoerdeRechthoek = new Rechthoek(lengte, breedte);
-                System.out.println(ingevoerdeRechthoek);
-                onjuisteInvoer = false;
-            } catch (IllegalArgumentException fout) {
-                System.out.println(fout.getMessage());
-            } finally {
-                System.out.println("Je invoer is op de juiste wijze afgehandeld.");
+        if (regelsUitBestand.size() > 0) {
+            ArrayList<Rechthoek> rechthoeken = new ArrayList<>();
+            for (int arrayTeller = 0; arrayTeller < regelsUitBestand.size(); arrayTeller++) {
+                String[] regelArray = regelsUitBestand.get(arrayTeller).split(",");
+                double lengte = Double.parseDouble(regelArray[0]);
+                double breedte = Double.parseDouble(regelArray[1]);
+                double xCoordinaat = Double.parseDouble(regelArray[2]);
+                double yCoordinaat = Double.parseDouble(regelArray[3]);
+                rechthoeken.add(new Rechthoek(lengte, breedte, new Punt
+                        (xCoordinaat, yCoordinaat), regelArray[4]));
+            }
+            for (Rechthoek rechthoek : rechthoeken) {
+                System.out.println(rechthoek);
+                System.out.println();
             }
         }
     }
