@@ -16,31 +16,25 @@ import java.util.Scanner;
  */
 public class MeetkundeLauncher {
     public static void main(String[] args) {
-        ArrayList<String> regelsUitBestand = new ArrayList<>();
         File rechthoekenBestand = new File("resources/Rechthoek.csv");
+        ArrayList<Rechthoek> rechthoeken = new ArrayList<>();
         try {
             Scanner invoer = new Scanner(rechthoekenBestand);
             while (invoer.hasNextLine()) {
-                regelsUitBestand.add(invoer.nextLine());
-            }
-        } catch (FileNotFoundException nietGevonden) {
-            System.out.println("Het bestand is niet gevonden.");
-        }
-        if (regelsUitBestand.size() > 0) {
-            ArrayList<Rechthoek> rechthoeken = new ArrayList<>();
-            for (int arrayTeller = 0; arrayTeller < regelsUitBestand.size(); arrayTeller++) {
-                String[] regelArray = regelsUitBestand.get(arrayTeller).split(",");
+                String[] regelArray = invoer.nextLine().split(",");
                 double lengte = Double.parseDouble(regelArray[0]);
                 double breedte = Double.parseDouble(regelArray[1]);
                 double xCoordinaat = Double.parseDouble(regelArray[2]);
                 double yCoordinaat = Double.parseDouble(regelArray[3]);
-                rechthoeken.add(new Rechthoek(lengte, breedte, new Punt
-                        (xCoordinaat, yCoordinaat), regelArray[4]));
+                rechthoeken.add(new Rechthoek(lengte, breedte, new
+                        Punt(xCoordinaat, yCoordinaat), regelArray[4]));
             }
             for (Rechthoek rechthoek : rechthoeken) {
                 System.out.println(rechthoek);
                 System.out.println();
             }
+        } catch (FileNotFoundException nietGevonden) {
+            System.out.println("Het bestand is niet gevonden.");
         }
     }
 }
