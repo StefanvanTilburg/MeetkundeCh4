@@ -1,10 +1,7 @@
 package controller;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 /**
@@ -41,11 +38,16 @@ public class MeetkundeLauncher {
         }
 
         if (connection != null) {
-            System.out.println("de verbinding is gemaakt!");
-            String sql = "INSERT INTO punt VALUES (3, 5);";
+            System.out.println("De verbinding is gemaakt!");
+            String sql = "SELECT * FROM cirkel WHERE straal > 5;";
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.executeUpdate();
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    double xCoordinaat = resultSet.getDouble("xcoordinaat");
+                    double yCoordinaat = resultSet.getDouble("ycoordinaat");
+                    System.out.printf("(%.2f, %.2f)\n", xCoordinaat, yCoordinaat);
+                }
                 connection.close();
             } catch (SQLException sqlFout) {
                 System.out.println(sqlFout);
